@@ -7,10 +7,7 @@ Set these in Railway or your hosting environment:
 - PORT
 - NODE_ENV=production
 - DATABASE_URL=postgresql://user:password@host:5432/database
-- CORS_ORIGIN=https://maacsys-main-production.up.railway.app
-- PHILSMS_ENDPOINT=https://your-sms-provider.example/send
-- PHILSMS_API_KEY=your-api-key
-- PHILSMS_SENDER_ID=MAACSYS
+- CORS_ORIGIN=https://maacsys-main-production.up.railway.ap
 
 ## Database setup
 
