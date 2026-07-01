@@ -74,6 +74,13 @@ async function initDb() {
       )
     `);
 
+    // Patch any pre-existing teachers table that predates these columns.
+    await pool.query(`ALTER TABLE teachers ADD COLUMN IF NOT EXISTS prs_number TEXT`);
+    await pool.query(`ALTER TABLE teachers ADD COLUMN IF NOT EXISTS verified BOOLEAN DEFAULT TRUE`);
+    await pool.query(`ALTER TABLE teachers ADD COLUMN IF NOT EXISTS is_admin BOOLEAN DEFAULT FALSE`);
+    await pool.query(`ALTER TABLE teachers ADD COLUMN IF NOT EXISTS verification_code TEXT`);
+    await pool.query(`ALTER TABLE teachers ADD COLUMN IF NOT EXISTS created_at TIMESTAMP DEFAULT NOW()`);
+
     await pool.query(`
       CREATE TABLE IF NOT EXISTS password_change_requests (
         id SERIAL PRIMARY KEY,
